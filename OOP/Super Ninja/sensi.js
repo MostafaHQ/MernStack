@@ -29,3 +29,16 @@ myninja.showStats();
 myninja.drinkSake();
 myninja.showStats();
 
+class Sensi extends Ninja {
+  constructor(name) {
+    super(name, 200, 10, 10);
+    this.wisdom = 10;
+  }
+  speakWisdome() {
+    this.drinkSake();
+  }
+}
+
+const sensi = new Sensi("Master Splinter");
+sensi.speakWisdome();
+sensi.showStats();
