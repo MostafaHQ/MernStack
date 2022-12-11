@@ -18,7 +18,6 @@ const Form = (props) => {
         if(e.target.value.length < 2){
             setFirstnameError("First Name must be at least 2 characters.")
         }else {
-            console.log("hiiii")
             setFirstnameError("");
         }
     }
@@ -46,7 +45,7 @@ const Form = (props) => {
         if(e.target.value.length < 8){
             setPasswordError("Password must be at least 8 characters.")
         }else {
-            setPassword("");
+            setPasswordError("");
         }
     }
 
@@ -55,7 +54,7 @@ const Form = (props) => {
         if(e.target.value.length != {password}){
             setConfPasswordError("Confirm Password must be same as Password")
         }else {
-            setConfPassword("");
+            setConfPasswordError("");
         }
     }
     const createUser = (e)=> {
@@ -105,6 +104,11 @@ const Form = (props) => {
             <div>
                 <label>Confrim Password:</label>
                 <input type="password" onChange={handleConfirmPassword} />
+                {
+                    confPasswordError ?
+                    <p>{confPasswordError}</p> :
+                    ""
+                }
             </div>
             <div>
                 <input type="submit" value= "Create user"/>
