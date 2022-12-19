@@ -14,9 +14,16 @@
 
 > db.students.find({lucky_number:{$gte: 1, $lte: 9}})
 
-db.students.updateMany({ }, {$push: {interests: {$each: ['coding', 'brunch', 'MongoDB']}}})
+> db.students.updateMany({ }, {$push: {interests: {$each: ['coding', 'brunch', 'MongoDB']}}})
 
-db.students.updateMany({ },{$addToSet:{interests:"Python"}})
+> db.students.updateMany({ },{$addToSet:{interests:"Python"}})
 
-db.students.update({name:"Bzour"},{$addToSet:{interests:"taxes"}})
+> db.students.update({name:"Bzour"},{$addToSet:{interests:"taxes"}})
 
+> db.students.update({name:"Bzour"}, {$pop: {interests: (1)}})
+
+> db.students.remove({home_state: "Jenin"})
+
+> db.students.remove({name: "Mostafa"})
+
+> db.students.remove({lucky_number: {$gt: 5}}, true)
