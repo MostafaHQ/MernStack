@@ -1,0 +1,22 @@
+> use my_first_db
+
+> db.createCollection("students")
+
+> db.students.insert({name:"Osama",home_state:"Nablus", lucky_number: 17, birthday:{month:2, day: 17, year:2000}})
+
+> db.students.find();
+
+> db.students.find({$or:[{home_state:"Jenin"},{home_state:"Nablus"}]});
+
+> db.students.find({lucky_number: {$gt: 3}})
+
+> db.students.find({lucky_number: {$lte: 10}})
+
+> db.students.find({lucky_number:{$gte: 1, $lte: 9}})
+
+db.students.updateMany({ }, {$push: {interests: {$each: ['coding', 'brunch', 'MongoDB']}}})
+
+db.students.updateMany({ },{$addToSet:{interests:"Python"}})
+
+db.students.update({name:"Bzour"},{$addToSet:{interests:"taxes"}})
+
