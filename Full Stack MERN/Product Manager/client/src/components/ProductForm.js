@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default (props) => {
+  const { initialTitle, initialPrice, initialDesc } = props;
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [desc, setDesc] = useState("");
@@ -15,7 +16,7 @@ export default (props) => {
         price,
         desc,
       })
-      .then((res) => addToDom(res.data.products))
+      .then((res) => addToDom(res.data))
       .catch((err) => console.log(err));
   };
 
