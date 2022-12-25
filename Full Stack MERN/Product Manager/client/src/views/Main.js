@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ProductForm from "../components/ProductForm";
 import ProductList from "../components/ProductList";
 
-const Main = (props) => {
+const Main = () => {
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -16,20 +16,23 @@ const Main = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const removeFromDom = (productId) => {
-    setProducts(products.filter((product) => product._id !== productId));
-  };
-
   const addToDom = (newProduct) => {
-    setProducts([...products, newProduct]);
+    axios
+      .post("http://localhost:8000/api/products", newProduct)
+      .then((res) => setProducts([...products, res.data]));
   };
 
   return (
     <div>
-      <ProductForm addToDom={addToDom} />
+      <ProductForm
+        onSubmitProp={addToDom}
+        initialTitle=""
+        initialPrice=""
+        initialDesc=""
+      />
       <hr />
       {loaded && (
-        <ProductList products={products} removeFromDom={removeFromDom} />
+        <ProductList products={products}/>
       )}
     </div>
   );

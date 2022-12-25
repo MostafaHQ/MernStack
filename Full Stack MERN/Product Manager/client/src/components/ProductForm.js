@@ -2,22 +2,23 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default (props) => {
-  const { initialTitle, initialPrice, initialDesc } = props;
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [desc, setDesc] = useState("");
+  const { initialTitle, initialPrice, initialDesc, onSubmitProp } = props;
+  const [title, setTitle] = useState(initialTitle);
+  const [price, setPrice] = useState(initialPrice);
+  const [desc, setDesc] = useState(initialDesc);
   const { addToDom } = props;
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8000/api/products", {
-        title,
-        price,
-        desc,
-      })
-      .then((res) => addToDom(res.data))
-      .catch((err) => console.log(err));
+    onSubmitProp({ title, price, desc });
+    // axios
+    //   .post("http://localhost:8000/api/products", {
+    //     title,
+    //     price,
+    //     desc,
+    //   })
+    //   .then((res) => addToDom(res.data))
+    //   .catch((err) => console.log(err));
   };
 
   return (
