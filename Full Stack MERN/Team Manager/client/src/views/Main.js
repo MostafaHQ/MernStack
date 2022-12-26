@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteButton from "../components/DeleteButton";
+import Nav from "../components/Nav";
 
 const Main = () => {
   const [players, setPlayers] = useState([]);
@@ -21,6 +22,7 @@ const Main = () => {
   };
   return (
     <div>
+      <Nav />
       <table>
         <thead>
           <tr>

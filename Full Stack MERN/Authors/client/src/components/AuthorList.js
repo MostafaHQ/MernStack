@@ -25,24 +25,30 @@ const AuthorList = (props) => {
     <div>
       <Link to={"/new"}>Add an author</Link>
       <h3>We have quotes by:</h3>
-      {/* <table>
-        <tr>
-          <th>Author</th>
-          <th>Actions available</th>
-        </tr>
-        {authors.map((author, i) => {
-          <tr key={i}>
-            <td>{authors}</td>
-            <td>
-              <Link to={"/authors/" + author._id}>Edit</Link> |
-              <DeleteButton
-                authorId={author._id}
-                successCallback={() => removeFromDom(author._id)}
-              />
-            </td>
-          </tr>;
-        })}
-      </table> */}
+      <table>
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Actions available</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loaded &&
+            authors.map((author, i) => {
+              return (
+                <tr key={i}>
+                  <td>{author.authorName}</td>
+                  <td>
+                    <DeleteButton
+                      authorId={author._id}
+                      successCallback={() => removeFromDom(author._id)}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </div>
   );
 };

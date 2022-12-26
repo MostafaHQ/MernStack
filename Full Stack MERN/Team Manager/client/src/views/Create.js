@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import PlayerForm from "../components/PlayerForm";
+import Nav from "../components/Nav";
 import { navigate } from "@reach/router";
 
 const Create = () => {
@@ -23,6 +24,7 @@ const Create = () => {
   };
   return (
     <div>
+      <Nav />
       <PlayerForm
         onSubmitProp={createPlayer}
         initialName=""

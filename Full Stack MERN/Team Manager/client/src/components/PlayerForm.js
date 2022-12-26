@@ -1,4 +1,13 @@
 import React, { useState } from "react";
+import {
+  Button,
+  Paper,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  Input,
+  Card,
+} from "@material-ui/core";
 
 const PlayerForm = (props) => {
   const { onSubmitProp, initialName, initialPosition, errors } = props;
@@ -11,30 +20,40 @@ const PlayerForm = (props) => {
   };
   return (
     <div>
-      <form onSubmit={onSubmitHandler}>
-      {errors.map((err, i) => (
-        <p key={i} style={{ color: "red" }}>
-          {err}
-        </p>
-      ))}
-        <p>
-          <label>Player Name:</label>
-          <input
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
-        </p>
-        <p>
-          <label>Preferred Position:</label>
-          <input
-            type="text"
-            onChange={(e) => setPosition(e.target.value)}
-            value={position}
-          />
-        </p>
-        <input type="submit" />
-      </form>
+      <Paper elevation={6}>
+        <form onSubmit={onSubmitHandler}>
+          {errors.map((err, i) => (
+            <p key={i} style={{ color: "red" }}>
+              {err}
+            </p>
+          ))}
+          <div>
+            <FormControl>
+              <InputLabel>Player Name:</InputLabel>
+              <Input
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
+            </FormControl>
+          </div>
+          <div>
+            <FormControl>
+              <InputLabel>Preferred Position:</InputLabel>
+              <Input
+                type="text"
+                onChange={(e) => setPosition(e.target.value)}
+                value={position}
+              />
+            </FormControl>
+          </div>
+          <div>
+            <Button variant="contained" type="submit">
+              Add
+            </Button>
+          </div>
+        </form>
+      </Paper>
     </div>
   );
 };
