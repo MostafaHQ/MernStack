@@ -34,11 +34,17 @@ const Update = (props) => {
     <div>
       <h3>Edit this author:</h3>
       {loaded && (
-        <AuthorForm
-          onSubmitProp={updateAuthor}
-          initialName={author.authorName}
-          formErrors={errors}
-        />
+        <>
+          <AuthorForm
+            onSubmitProp={updateAuthor}
+            initialName={author.authorName}
+            formErrors={errors}
+          />
+          <DeleteButton
+            authorId={author._id}
+            successCallback={() => navigate("/")}
+          />
+        </>
       )}
     </div>
   );

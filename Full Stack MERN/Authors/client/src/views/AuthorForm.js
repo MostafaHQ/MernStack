@@ -9,7 +9,7 @@ const AuthorForm = (props) => {
     e.preventDefault();
     onSubmitProp({ authorName });
     console.log(props.errors);
-    // navigate("/");
+    navigate("/");
   };
 
   return (
