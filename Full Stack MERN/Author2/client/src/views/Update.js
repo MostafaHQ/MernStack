@@ -2,6 +2,7 @@ import { navigate } from "@reach/router";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AuthorForm from "../components/AuthorForm";
+import DeleteButton from "../components/DeleteButton";
 import { Link } from "@reach/router";
 
 const Update = (props) => {
@@ -9,7 +10,7 @@ const Update = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8000/api/author/" + props.id).then((res) => {
+    axios.get("http://localhost:8000/api/authors/" + props.id).then((res) => {
       setAuthor(res.data);
       setLoaded(true);
     });
@@ -38,11 +39,17 @@ const Update = (props) => {
       <Link to={"/"}>Home</Link>
       <h4>Edit this author:</h4>
       {loaded && (
-        <AuthorForm
-          onSubmitProp={updateAuthor}
-          initialName={author.authorName}
-          errors={errors}
-        />
+        <>
+          <AuthorForm
+            onSubmitProp={updateAuthor}
+            initialName={author.authorName}
+            errors={errors}
+          />
+          <DeleteButton
+            authorId={author._id}
+            successCallback={() => navigate("/")}
+          />
+        </>
       )}
     </div>
   );
