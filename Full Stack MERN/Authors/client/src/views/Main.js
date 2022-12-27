@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import AuthorList from "../components/AuthorList";
 import AuthorForm from "./AuthorForm";
-import { navigate } from "@reach/router";
+import { navigate, Link } from "@reach/router";
 
 const Main = () => {
-  const [authors, setAuthors] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const addToDom = (newAuthor) => {
     axios
       .post("http://localhost:8000/api/authors", newAuthor)
       .then((res) => {
-        setAuthors([...authors, res.data]);
+        console.log(res);
         navigate("/");
       })
       .catch((err) => {
@@ -27,6 +25,8 @@ const Main = () => {
 
   return (
     <div>
+      <Link to={"/"}>Home</Link>
+      <h3>Add an new author:</h3>
       <AuthorForm onSubmitProp={addToDom} initialName="" errors={errors} />
     </div>
   );

@@ -1,10 +1,8 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
-import axios from "axios";
-import DeleteButton from "./DeleteButton";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-const AuthorList = (props) => {
+const Main = () => {
   const [authors, setAuthors] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -13,7 +11,6 @@ const AuthorList = (props) => {
       .then((res) => {
         setAuthors(res.data);
         setLoaded(true);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -24,10 +21,11 @@ const AuthorList = (props) => {
 
   return (
     <div>
+      <h1>Favorite authors</h1>
       <Link to={"/new"}>Add an author</Link>
-      <h3>We have quotes by:</h3>
-      <div className="container">
-        <table className="table table-border">
+      <h4>We have quotes by:</h4>
+      <div className="container mt-3">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th>Author</th>
@@ -40,11 +38,12 @@ const AuthorList = (props) => {
                 return (
                   <tr key={i}>
                     <td>{author.authorName}</td>
+                    <td></td>
                     <td>
-                      <DeleteButton
+                      {/* <DeleteButton
                         authorId={author._id}
-                        successCallback={() => removeFromDom(author._id)}
-                      />
+                        successCallback={() => removeFromDom(player._id)}
+                      /> */}
                     </td>
                   </tr>
                 );
@@ -56,4 +55,4 @@ const AuthorList = (props) => {
   );
 };
 
-export default AuthorList;
+export default Main;

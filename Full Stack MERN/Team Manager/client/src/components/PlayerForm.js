@@ -21,7 +21,7 @@ const PlayerForm = (props) => {
   };
   return (
     <div>
-      <Paper elevation={6} className="paper">
+      <Paper elevation={10} className="paper">
         <form className="form1" onSubmit={onSubmitHandler}>
           <div>
             <FormControl>

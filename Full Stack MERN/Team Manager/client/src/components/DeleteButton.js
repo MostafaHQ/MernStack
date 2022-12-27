@@ -5,8 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const DeleteButton = (props) => {
   const { playerId, successCallback } = props;
   const deletePlayer = (e) => {
-    const ttr = window.confirm("Are you sure to delete this player");
-    if (ttr) {
+    if (window.confirm("Are you sure to delete this player")) {
       axios
         .delete("http://localhost:8000/api/players/" + playerId)
         .then((res) => {

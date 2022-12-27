@@ -11,6 +11,7 @@ const PlayerSchema = new mongoose.Schema(
       required: [true, "Position is required"],
       minlength: [3, "Position must be at least three characters"],
     },
+    status:{game1:{type:Number},game2:{type:Number},game3:{type:Number}}
   },
   { timestamps: true }
 );

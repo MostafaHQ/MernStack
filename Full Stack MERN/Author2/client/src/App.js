@@ -1,16 +1,16 @@
 import "./App.css";
 import { Router } from "@reach/router";
-import Main from "./views/Main";
 import Create from "./views/Create";
-import PlayersStatus from "./views/PlayersStatus";
+import Main from "./views/Main";
+import Update from "./views/Update";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Main path={"/players/list"} />
-        <Create path={"/players/addplayer"} />
-        <PlayersStatus path={"/game/status/:id"}/>
+        <Main path={"/"} />
+        <Create path={"/new"} />
+        <Update path={"/edit/:id"} />
       </Router>
     </div>
   );
