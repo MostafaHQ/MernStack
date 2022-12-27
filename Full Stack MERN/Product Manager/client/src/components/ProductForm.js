@@ -11,14 +11,6 @@ export default (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     onSubmitProp({ title, price, desc });
-    // axios
-    //   .post("http://localhost:8000/api/products", {
-    //     title,
-    //     price,
-    //     desc,
-    //   })
-    //   .then((res) => addToDom(res.data))
-    //   .catch((err) => console.log(err));
   };
 
   return (
