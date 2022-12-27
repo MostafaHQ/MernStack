@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.paper{
+  height: 300px;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.form1{
+  
+}

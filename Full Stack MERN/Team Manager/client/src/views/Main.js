@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteButton from "../components/DeleteButton";
 import Nav from "../components/Nav";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
   const [players, setPlayers] = useState([]);
@@ -23,32 +24,34 @@ const Main = () => {
   return (
     <div>
       <Nav />
-      <table>
-        <thead>
-          <tr>
-            <th>Player Name</th>
-            <th>Preferred Position</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {loaded &&
-            players.map((player, i) => {
-              return (
-                <tr key={i}>
-                  <td>{player.name}</td>
-                  <td>{player.position}</td>
-                  <td>
-                    <DeleteButton
-                      playerId={player._id}
-                      successCallback={() => removeFromDom(player._id)}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+      <div className="container mt-3">
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Player Name</th>
+              <th>Preferred Position</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {loaded &&
+              players.map((player, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{player.name}</td>
+                    <td>{player.position}</td>
+                    <td>
+                      <DeleteButton
+                        playerId={player._id}
+                        successCallback={() => removeFromDom(player._id)}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

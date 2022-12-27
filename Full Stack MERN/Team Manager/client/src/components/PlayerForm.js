@@ -8,6 +8,7 @@ import {
   Input,
   Card,
 } from "@material-ui/core";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const PlayerForm = (props) => {
   const { onSubmitProp, initialName, initialPosition, errors } = props;
@@ -20,13 +21,8 @@ const PlayerForm = (props) => {
   };
   return (
     <div>
-      <Paper elevation={6}>
-        <form onSubmit={onSubmitHandler}>
-          {errors.map((err, i) => (
-            <p key={i} style={{ color: "red" }}>
-              {err}
-            </p>
-          ))}
+      <Paper elevation={6} className="paper">
+        <form className="form1" onSubmit={onSubmitHandler}>
           <div>
             <FormControl>
               <InputLabel>Player Name:</InputLabel>
@@ -47,6 +43,11 @@ const PlayerForm = (props) => {
               />
             </FormControl>
           </div>
+          {errors.map((err, i) => (
+            <p key={i} style={{ color: "red" }}>
+              {err}
+            </p>
+          ))}
           <div>
             <Button variant="contained" type="submit">
               Add
